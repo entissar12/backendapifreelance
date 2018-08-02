@@ -39,7 +39,7 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 SECRET_KEY = 'g*w(k6!6$-j08t3zcbb6g&5nyeqk=zbuq9qflk=xb*-p!u0(z2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool("DJANGO_DEBUG", False)
+DEBUG = False
 
 ALLOWED_HOSTS = ['.herokuapp.com', 'localhost']
 
@@ -102,7 +102,6 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 DATABASES = {
-    # 'default': env.db("DATABASE_URL", default="postgres:///spicy"),
     'default': dj_database_url.config(
             default=env.db('DATABASE_URL')
         )
