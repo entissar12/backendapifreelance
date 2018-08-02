@@ -11,6 +11,7 @@ django-rest-auth==0.9.3
 djangorestframework==3.8.2
 environ==1.0
 freeze==1.0.10
+gunicorn==19.9.0
 idna==2.7
 oauthlib==2.1.0
 psycopg2==2.7.4
