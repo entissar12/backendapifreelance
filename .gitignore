@@ -4,3 +4,4 @@ load_env.sh
 .idea/misc.xml
 .idea/modules.xml
 .idea/workspace.xml
+*.pyc
