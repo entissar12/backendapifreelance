@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from app.urls import *
 from django.conf.urls import url, include
+from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^', include(router.urls)),
     url('admin/', admin.site.urls),
     url(r'^rest-auth/', include('rest_auth.urls')),
     url(r'^rest-auth/registration/', include('rest_auth.registration.urls'))
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
