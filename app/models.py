@@ -79,3 +79,12 @@ class Offer(models.Model):
     details = models.TextField()
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='offers')
     freelancer = models.ForeignKey(Profile, on_delete=models.CASCADE)
+
+
+class ResetToken(models.Model):
+    token_reset = models.CharField(max_length=5)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    created = models.DateTimeField(_("Created"), auto_now_add=True)
+
+    def __str__(self):
+        return self.token_reset

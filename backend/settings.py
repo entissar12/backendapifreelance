@@ -146,12 +146,13 @@ USE_TZ = True
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework.authentication.TokenAuthentication',),
     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
 }
 
 SITE_ID = 1
 
 REST_AUTH_REGISTER_SERIALIZERS = {
-    'REGISTER_SERIALIZER': 'app.serializers.ProfileSerializer',
+    'REGISTER_SERIALIZER': 'app.serializers.UserProfileSerializer',
 }
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -159,3 +160,16 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+OLD_PASSWORD_FIELD_ENABLED = True
+
+REST_AUTH_SERIALIZERS = {
+    'PASSWORD_RESET_SERIALIZER': 'app.serializers.ResetSerializer',
+    'PASSWORD_RESET_CONFIRM_SERIALIZER': 'app.serializers.PasswordResetConfirmSerializer',
+}
+
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'app.serializers.ProfileSerializer',
+}
