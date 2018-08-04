@@ -25,10 +25,11 @@ class ProfileSerializer(serializers.ModelSerializer):
     last_name = serializers.CharField(read_only=True)
     location = serializers.CharField(source='profile.location', read_only=True)
     role = serializers.BooleanField(source='profile.role', read_only=True)
+    pk = serializers.IntegerField(source='profile.pk', read_only=True)
 
     class Meta:
         model = UserModel
-        fields = ('username', 'email', 'last_name', 'first_name', 'location', 'role',)
+        fields = ('pk', 'username', 'email', 'last_name', 'first_name', 'location', 'role',)
 
 
 class UserProfileSerializer(RegisterSerializer):

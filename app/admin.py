@@ -3,6 +3,18 @@ from .models import *
 
 
 admin.site.register(Category)
-admin.site.register(Offer)
-admin.site.register(Project)
-admin.site.register(Profile)
+
+
+class OfferAdmin(admin.ModelAdmin):
+    list_display = ('project', 'freelancer', 'price', 'delivery_time')
+admin.site.register(Offer, OfferAdmin)
+
+
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ('title', 'employer', 'publish_date', 'budget', 'location')
+admin.site.register(Project, ProjectAdmin)
+
+
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('user', 'role', 'location')
+admin.site.register(Profile, ProfileAdmin)

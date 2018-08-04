@@ -1,4 +1,3 @@
-from requests import Response
 from rest_framework import viewsets
 from .serializers import *
 from django_filters.rest_framework import DjangoFilterBackend
@@ -14,7 +13,7 @@ class ProjectViewSet(viewsets.ModelViewSet):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
     filter_backends = (DjangoFilterBackend, filters.OrderingFilter,)
-    filter_fields = ('category', 'location',)
+    filter_fields = ('category', 'location', 'employer')
     ordering_fields = ('publish_date', 'budget')
 
     def perform_create(self, serializer):
@@ -24,6 +23,8 @@ class ProjectViewSet(viewsets.ModelViewSet):
 class OfferViewSet(viewsets.ModelViewSet):
     queryset = Offer.objects.all()
     serializer_class = OfferSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filter_fields = ('freelancer',)
 
     def perform_create(self, serializer):
         serializer.save(freelancer=self.request.user.profile)
