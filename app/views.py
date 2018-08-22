@@ -13,7 +13,7 @@ class ProjectViewSet(viewsets.ModelViewSet):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
     filter_backends = (DjangoFilterBackend, filters.OrderingFilter,)
-    filter_fields = ('category', 'location', 'employer')
+    filter_fields = ('category', 'location', 'employer', 'offers__freelancer')
     ordering_fields = ('publish_date', 'budget')
 
     def perform_create(self, serializer):
