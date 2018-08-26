@@ -6,7 +6,7 @@ admin.site.register(Category)
 
 
 class OfferAdmin(admin.ModelAdmin):
-    list_display = ('project', 'freelancer', 'price', 'delivery_time')
+    list_display = ('project', 'freelancer', 'price', 'delivery_time', 'status')
 admin.site.register(Offer, OfferAdmin)
 
 
