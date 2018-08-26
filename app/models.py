@@ -34,6 +34,11 @@ LOCATION_CHOICES = (
     ('Zaghouan'   , _('Zaghouan'   )),
 )
 
+OFFER_STATUS_CHOICES = (
+    ('Input', 'Input'),
+    ('Accepted', 'Accepted'),
+)
+
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_auth_token(sender, instance=None, created=False, **kwargs):
@@ -79,6 +84,7 @@ class Offer(models.Model):
     details = models.TextField()
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='offers')
     freelancer = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    status = models.CharField(max_length=255, choices=OFFER_STATUS_CHOICES, default='Input')
 
 
 class ResetToken(models.Model):
