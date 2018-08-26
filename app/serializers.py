@@ -64,7 +64,7 @@ class OfferSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Offer
-        fields = ('delivery_time', 'price', 'details', 'project', 'freelancer', 'freelancer_name',)
+        fields = ('delivery_time', 'price', 'details', 'project', 'freelancer', 'freelancer_name', 'status', 'pk')
 
 
 class ProjectSerializer(serializers.HyperlinkedModelSerializer):
